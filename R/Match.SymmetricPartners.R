@@ -5,6 +5,7 @@
 #' @author Carlus Deneke
 #' @importFrom seqinr s2c
 #' @importFrom seqinr c2s
+#' @importFrom seqinr comp
 Match.SymmetricPartners <- function(seq){
   # require(seqinr, quietly = T)
   match(sapply(seq, function(x) seqinr::c2s(base::rev(seqinr::comp(seqinr::s2c(x)))) ),base::tolower(seq) )
