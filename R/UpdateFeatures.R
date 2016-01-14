@@ -26,7 +26,7 @@ UpdateFeatures <- function(Path2ReadFiles, savePath = file.path(Path2ReadFiles,"
   if(verbose == T){
     print(paste("A log-file is recorded under",file.path(Path2ReadFiles,"FeatureCreation.log") ))
     con = file(file.path(Path2ReadFiles,"FeatureCreation.log"), open = "a")
-    sink(file=con, append=T, split=F)
+    sink(file=con, append=T, split=T)
     print(paste("New run for folder",Path2ReadFiles,"on",date() ))
     print(sys.call())
   }
