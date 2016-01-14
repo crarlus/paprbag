@@ -1,7 +1,7 @@
 #' @title Update all features in a specified folder
 #' @description Update all features in a specified folder. Save features in subfolder "Features". Backup old features if desired.
-#' @param Path2File A path to the location of the read files
-#' @param savePath Path where features should be saved to
+#' @param Path2ReadFiles A path to the location of the read files
+#' @param savePath Path where features should be saved to (default: Path2ReadFiles/Features)
 #' @param Cores Multicore functionality for linux systems.
 #' @param Backup Do you want to backup old features
 #' @param AAindex_Selection Parameter for Features
@@ -12,7 +12,8 @@
 #' @author Carlus Deneke
 #' @seealso Wraps \code{\link{CreateFeaturesFromReads}}
 #' @importFrom foreach %dopar%
-UpdateFeatures <- function(Path2File, savePath = Path2File, Cores = 1, Backup = T, pattern = "fasta$|mason$", verbose = T,...){
+#' @export
+UpdateFeatures <- function(Path2ReadFiles, savePath = file.path(Path2ReadFiles,"Features"), Cores = 1, Backup = F, pattern = "fasta$|mason$", verbose = T,...){
 
   require(foreach)
   require(Biostrings)
@@ -23,16 +24,16 @@ UpdateFeatures <- function(Path2File, savePath = Path2File, Cores = 1, Backup = 
   }
 
   if(verbose == T){
-    print(paste("A log-file is recorded under",file.path(Path2File,"FeatureCreation.log") ))
-    con = file(file.path(Path2File,"FeatureCreation.log"), open = "a")
+    print(paste("A log-file is recorded under",file.path(Path2ReadFiles,"FeatureCreation.log") ))
+    con = file(file.path(Path2ReadFiles,"FeatureCreation.log"), open = "a")
     sink(file=con, append=T, split=F)
-    print(paste("New run for folder",Path2File,"on",date() ))
+    print(paste("New run for folder",Path2ReadFiles,"on",date() ))
     print(sys.call())
   }
 
   if(verbose == T) StartTime <- proc.time()[3]
 
-  ReadFiles <- list.files(Path2File, pattern = pattern, full.names = T)
+  ReadFiles <- list.files(Path2ReadFiles, pattern = pattern, full.names = T)
 
   # loop over all read files
   FeatureCheck <- foreach::foreach(i = 1: length(ReadFiles)) %dopar% {

@@ -7,6 +7,7 @@
 #'
 #' This function uses the package data.table for efficiently joining many large data.frames. For even larger files, it is recommended to use linux command line tools
 #' @param Path2Files A complete path to the read folder (i.e. it contains a subfolder 'Features')
+#' @param pattern A string providing a distinct search pattern for all feature files (default = "Features")
 #' @param OSlabels A vector containing either 'HP' or 'NP' together with the name attributes pointing to the Organism identifier (Bioproject ID)
 #' @param savePath The name of the newly created training data set folder
 #' @param CompressOption Do you want to compress the saved files (takes time but saves disk space)?
@@ -19,7 +20,7 @@
 #' @author Carlus Deneke
 #' @family TrainingFunctions
 #' @importFrom foreach %do%
-Create.TrainingDataSet <- function(Path2Files = NULL, OSlabels = NULL, savePath = NULL,CompressOption = T){
+Create.TrainingDataSet <- function(Path2Files = NULL,pattern="Features",OSlabels = NULL, savePath = file.path(Path2Files,"TrainingData"),CompressOption = T){
 
   # require(foreach, quietly = T)
   # require(data.table, quietly = T)
@@ -33,7 +34,7 @@ Create.TrainingDataSet <- function(Path2Files = NULL, OSlabels = NULL, savePath 
 
 
   # list feature files & select subset
-  FeatureFiles <- list.files(file.path(Path2Files,"Features"),pattern="Features",full.names=T)
+  FeatureFiles <- list.files(file.path(Path2Files),pattern=pattern,full.names=T)
   if(!is.null(SearchPatterns)) FeatureFiles <- unlist(lapply(SearchPatterns, function(pattern) grep(paste(pattern,"[_.]",sep=""),FeatureFiles,value=T,invert = F) ))
 
   if(length(FeatureFiles) == 0) stop("No feature files selected")

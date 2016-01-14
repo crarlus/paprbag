@@ -68,7 +68,11 @@ CreateFeaturesFromReads <- function(Reads,
   # -----
   # 2. Motifs
 
-  if(Do.NTMotifs ==  T & is.character(NTMotifs) ) {
+  if(Do.NTMotifs ==  T ) {
+
+    if(!is.character(NTMotifs) ) {
+      NTMotifs <- get(data("GenomicMotifs"))
+    }
 
     MotifCount <- data.frame(do.call(cbind,lapply(NTMotifs,function(pattern) Biostrings::vcountPattern(pattern = pattern,subject = Reads, fixed = T, max.mismatch=AllowedMismatches) ) ) )
 
