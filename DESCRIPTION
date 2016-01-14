@@ -8,8 +8,7 @@ Maintainer: Carlus Deneke <denekeC@rki.de>
 Description: Pathogenicity Prediction of Bacterial Genomes is a comprehensive
     machine learning workflow that trains a phenotype classifier on a set of genomes
     with phenotype labels and predicts the phenotype of a set of reads.
-License: What license is it under? tba: MIT license or GNU General Public
-    License (GPL)
+License: GPL-2
 LazyData: TRUE
 Imports:
     seqinr,
