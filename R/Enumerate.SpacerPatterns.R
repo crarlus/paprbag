@@ -2,6 +2,9 @@
 #' @param k Length of contingous word
 #' @param l Length of spaced word
 #' @return Returns a data.frame of all possible patterns, row-by-row
+#' @seealso \link{CreateFeaturesFromReads}
+#' @family SpacedWordFeatures
+#' @author Carlus Deneke
 Enumerate.SpacerPatterns <- function(k,l){
   Frees <- l-2
   Ones <- k-2

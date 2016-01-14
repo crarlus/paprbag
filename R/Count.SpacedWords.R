@@ -1,21 +1,28 @@
-# Compute SpacedWords
-#' Count the occurrence of all spaced words
-#' @param Reads
+#' @title Compute SpacedWords
+#' @description  Count the occurrence of all spaced words
+#' @param Reads A DNAStringSet Object
 #' @param k The length of the contingous words, i.e. the kmer size
 #' @param l The length of the spaced words
+#' @param prob If TRUE then the relative frequencies are returned (default TRUE)
+#' @param symmetric If TRUE then kmers are returned in their canonical representation (i.e. including their reverse-complement) Default = T
 #' @return A matrix containing the combined counts for all possible spacer-patterns
-#' @export
-Count.SpacedWords <- function(Reads,k,l,combinePatterns=T,SinglePattern = 0,prob=T,symmetric = T){
+#' @seealso \link[Biostrings]{oligonucleotideFrequency}
+#' @seealso \link{CreateFeaturesFromReads}
+#' @family SpacedWordFeatures
+#' @author Carlus Deneke
+#' @importFrom foreach %do%
+Count.SpacedWords <- function(Reads,k,l,prob=T,symmetric = T){
 
   #require(foreach)
   #require(seqinr)
   #require(Biostrings)
 
+
+
   if(k >= l) stop("l must be larger than k")
 
   # Enumerate patterns
   AllPatterns <- Enumerate.SpacerPatterns (k=k,l=l)
-  if( all(SinglePattern != 0) & is.numeric(SinglePattern) ) AllPatterns <- AllPatterns[SinglePattern]
 
   # find all l-mers
   RawCounts <- Biostrings::oligonucleotideFrequency(Reads,width = l)
@@ -24,7 +31,7 @@ Count.SpacedWords <- function(Reads,k,l,combinePatterns=T,SinglePattern = 0,prob
 
   ContiguousWords_allPatterns <- foreach::foreach(Current.Pattern = AllPatterns) %do% {
 
-    CombinedCounts_df <- do.call(cbind,foreach::foreach(i = 1:length(ContiguousWords) ) %do% {
+    CombinedCounts_df <- do.call(cbind, foreach::foreach(i = 1:length(ContiguousWords) ) %do% {
 
       Current.ContiguousWord <- seqinr::s2c(ContiguousWords[i])
 
@@ -42,6 +49,7 @@ Count.SpacedWords <- function(Reads,k,l,combinePatterns=T,SinglePattern = 0,prob
   } # all patterns
 
   # combine different patterns: combine column wise: add
+  combinePatterns=T
   if(combinePatterns == T) {
     ContiguousWords_allPatterns <- Reduce('+',ContiguousWords_allPatterns)
 

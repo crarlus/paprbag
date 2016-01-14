@@ -2,11 +2,20 @@
 % Please edit documentation in R/Match.SymmetricPartners.R
 \name{Match.SymmetricPartners}
 \alias{Match.SymmetricPartners}
-\title{Convert vector of sequences to its reverse complement and match symmetric partners}
+\title{Match a DNA sequence and its reverse complement}
 \usage{
 Match.SymmetricPartners(seq)
 }
+\arguments{
+\item{seq}{A list of strings containing DNA sequences}
+}
+\value{
+A vector of matching indices
+}
 \description{
 Convert vector of sequences to its reverse complement and match symmetric partners
+}
+\author{
+Carlus Deneke
 }
 

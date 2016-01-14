@@ -8,15 +8,16 @@
 #' \itemize{
 #'  \item{"parameter 1"}{Stuff1}
 #'  \item{"parameter 2"}{Stuff2}
+#'  }
 #' @return A prediction object of class 'ranger.prediction'
+#' @seealso \link[ranger]{predict.ranger}
+#' @seealso \link{Predict.ReadSet.fromFiles}
 #' @export
-##' \link[pkg]{function} e.g. \link[stringi]{stri_c}
-##' \code{\link[MASS]{stats}}
-##' @seealso allows you to point to other useful resources, either on the web, \url{http://www.r-project.org}, in your package \code{\link{functioname}}, or another package \code{\link[packagename]{functioname}}.
+#' @author Carlus Deneke
 #
 Predict.ReadSet <- function(ForestObject, ReadObject, Feature.Configuration = NULL, verbose = F, num.threads = NULL, ...){
 
-  require(ranger)
+  # require(ranger)
 
   if(class(ForestObject) != 'ranger') stop("Forest object is not of class 'ranger'")
   if(class(ReadObject) != 'DNAStringSet') stop ("ReadObject is not of class DNAStringSet")
@@ -72,9 +73,6 @@ Predict.ReadSet <- function(ForestObject, ReadObject, Feature.Configuration = NU
     if(verbose) print(paste("Prediction took", paste(round(Time3[1:3] - Time2[1:3],1), collapse = ","),"s" ))
     if(verbose) print(paste("Total workflow took", paste(round(Time3[1:3] - Time1[1:3],1), collapse = ","),"s" ))
 
-  # Remove forest object ?
-    rm(ForestObject)
-    gc()
 
   # return
       return(Prediction)

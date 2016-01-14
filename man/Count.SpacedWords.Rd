@@ -2,20 +2,35 @@
 % Please edit documentation in R/Count.SpacedWords.R
 \name{Count.SpacedWords}
 \alias{Count.SpacedWords}
-\title{Count the occurrence of all spaced words}
+\title{Compute SpacedWords}
 \usage{
-Count.SpacedWords(Reads, k, l, combinePatterns = T, SinglePattern = 0,
-  prob = T, symmetric = T)
+Count.SpacedWords(Reads, k, l, prob = T, symmetric = T)
 }
 \arguments{
+\item{Reads}{A DNAStringSet Object}
+
 \item{k}{The length of the contingous words, i.e. the kmer size}
 
 \item{l}{The length of the spaced words}
+
+\item{prob}{If TRUE then the relative frequencies are returned (default TRUE)}
+
+\item{symmetric}{If TRUE then kmers are returned in their canonical representation (i.e. including their reverse-complement) Default = T}
 }
 \value{
 A matrix containing the combined counts for all possible spacer-patterns
 }
 \description{
 Count the occurrence of all spaced words
+}
+\author{
+Carlus Deneke
+}
+\seealso{
+\link[Biostrings]{oligonucleotideFrequency}
+
+\link{CreateFeaturesFromReads}
+
+Other SpacedWordFeatures: \code{\link{Enumerate.SpacerPatterns}}
 }
 

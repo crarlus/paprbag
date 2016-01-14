@@ -1,6 +1,7 @@
 #' @title Identify features from random forest object
 #' @param ForestObject An object of class 'ranger'
 #' @return A list object containing the relevant feature type information
+#' @author Carlus Deneke
 IdentifyFeatures.FromForest <- function(ForestObject, verbose = F){
   if(class(ForestObject) != 'ranger') stop("ForestObject is not of class 'ranger'")
 

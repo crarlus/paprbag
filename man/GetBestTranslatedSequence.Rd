@@ -15,4 +15,7 @@ Returns a list containing 'BestSeq' (Peptide sequence with the lowest number of 
 \description{
 Translate a nulceotide sequence into all possible 6-frames and decide for the frame with the fewest number of stop codons
 }
+\author{
+Carlus Deneke
+}
 

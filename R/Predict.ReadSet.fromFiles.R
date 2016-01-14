@@ -8,10 +8,13 @@
 #' @param Save.AsTSV Should the output saved in tsv (tab separated format) instead of rds format ?
 #' @param ... Further arguments passed to function 'Predict.ReadSet'
 #' @return Either the predictions (if Return.Predictions == T ) or TRUE/FALSE if Outputfile exists
+#' #' @seealso \link[ranger]{predict.ranger}
+#' @seealso \link{Predict.ReadSet}
 #' @export
+#' @author Carlus Deneke
 Predict.ReadSet.fromFiles <- function(Path2Forest, Path2ReadFiles, saveLocation, OutputFilename = "Output", Return.Predictions = F, Save.AsTSV = F, ...){
 
-  require(Biostrings)
+  # require(Biostrings)
 
   if(verbose) Time0 <- proc.time()
   # load data

@@ -1,4 +1,5 @@
 #' Make Features Symmetric by combining a dna string with its reverse complement
+#' @author Carlus Deneke
 Make.Symmetric <- function(Data){
 
   ColNames <- sapply(strsplit(colnames(Data),"_"), function(x) tail(x,1))
@@ -12,8 +13,6 @@ Make.Symmetric <- function(Data){
   colnames(United) <- Combo
   United[,Majoranas] <- United[,Majoranas]/2
   United <- United[,-Dups]
-
-  #colnames(United) <- paste(sapply(strsplit(colnames(Data),"_"), function(x) x[-length(x)])[-Dups],colnames(United),sep="_")
 
   return(United)
 

@@ -5,9 +5,10 @@
 #' @param Prefix How should the columns of pattern matches be called
 #' @param aggregate Should the individual pattern matches be aggregated into a single column?
 #' @return A data.frame containing the matched patterns (columns)
+#' @author Carlus Deneke
 FindPatternsInAAseq_wMismatches <- function(Seqs,Patterns, AllowedMismatches = 0, aggregate = F, Prefix = "AAPattern"){
 
-  MatchTable <- do.call(cbind,lapply(Patterns,function(pattern) vcountPattern(pattern = pattern,subject = Seqs, fixed = T, max.mismatch=AllowedMismatches) ) )
+  MatchTable <- do.call(cbind,lapply(Patterns,function(pattern) Biostrings::vcountPattern(pattern = pattern,subject = Seqs, fixed = T, max.mismatch=AllowedMismatches) ) )
 
   if(aggregate == T){
     Aggregated <- data.frame(rowSums(MatchTable) )

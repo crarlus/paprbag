@@ -23,4 +23,7 @@ For a list of read sequences, translate into all 6-frames and search for pattern
 \details{
 The matches in the individual frames are combined
 }
+\author{
+Carlus Deneke
+}
 

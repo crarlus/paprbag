@@ -5,14 +5,14 @@
 # #' @param Prefix How should the columns of pattern matches be called
 # #' @param aggregate Should the individual pattern matches be aggregated into a single column?
 # #' @return A data.frame containing the matched patterns (columns)
+#' @author Carlus Deneke
 FindPatternsInAAseq <- function(Seq, Patterns, aggregate = F, Prefix = "AAPattern"){
 
   # Preparation
-  BestTranslation_string <- strsplit(toString(Seq),split=", ",fixed=T)[[1]]
+  BestTranslation_string <- base::strsplit(toString(Seq),split=", ",fixed=T)[[1]]
   BestTranslation_string <- gsub("*","u",BestTranslation_string,fixed=T) # # stringr cannot handle "**", therefore replace all "*" by "u"
 
-  require(stringr)
-  MatchTable <- t(do.call(rbind, lapply(Patterns, function(pattern) str_detect(BestTranslation_string,pattern) ) ))
+  MatchTable <- t(do.call(rbind, lapply(Patterns, function(pattern) stringr::str_detect(BestTranslation_string,pattern) ) ))
 
   if(aggregate == T){
     Aggregated <- data.frame(rowSums(MatchTable) )

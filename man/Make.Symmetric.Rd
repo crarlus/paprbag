@@ -9,4 +9,7 @@ Make.Symmetric(Data)
 \description{
 Make Features Symmetric by combining a dna string with its reverse complement
 }
+\author{
+Carlus Deneke
+}
 

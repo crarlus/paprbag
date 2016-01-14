@@ -4,6 +4,8 @@
 #' FeatureTable.rds containing the features in a data.frame object
 #' FeatureRowDescription.rds containing the read description and allows identification of Organism, Chromosome and read
 #' ReadLabel_OS.rds containing a label for each read based on the organisms label
+#'
+#' This function uses the package data.table for efficiently joining many large data.frames. For even larger files, it is recommended to use linux command line tools
 #' @param Path2Files A complete path to the read folder (i.e. it contains a subfolder 'Features')
 #' @param OSlabels A vector containing either 'HP' or 'NP' together with the name attributes pointing to the Organism identifier (Bioproject ID)
 #' @param savePath The name of the newly created training data set folder
@@ -14,10 +16,13 @@
 #' Create.TrainingDataSet (Path2Files = NULL, OSlabels = NULL, savePath = NULL,CompressOption = T)
 #' }
 #' @export
+#' @author Carlus Deneke
+#' @family TrainingFunctions
+#' @importFrom foreach %do%
 Create.TrainingDataSet <- function(Path2Files = NULL, OSlabels = NULL, savePath = NULL,CompressOption = T){
 
-  require(foreach, quietly = T)
-  require(data.table, quietly = T)
+  # require(foreach, quietly = T)
+  # require(data.table, quietly = T)
 
   # Checks:
   if(is.null(Path2Files)) stop("Please submit a path pointing to the read folder")
@@ -34,21 +39,21 @@ Create.TrainingDataSet <- function(Path2Files = NULL, OSlabels = NULL, savePath 
   if(length(FeatureFiles) == 0) stop("No feature files selected")
 
   # read in feature files
-  FeatureTables <- foreach(i=1:length(FeatureFiles)) %do% { readRDS(FeatureFiles[i]) }
+  FeatureTables <- foreach::foreach(i=1:length(FeatureFiles)) %do% { readRDS(FeatureFiles[i]) }
 
   # extract OS names
-  FeatureTables_rownames <-  rbindlist(lapply(FeatureTables,function(x) data.frame(FullName=rownames(x),stringsAsFactors = F) ) )
+  FeatureTables_rownames <-  data.table::rbindlist(lapply(FeatureTables,function(x) data.frame(FullName=rownames(x),stringsAsFactors = F) ) )
   FeatureTables_rownames[,OSid:=list(OSid=GetOSid(FullName))]
 
   # extract OS labels
-  ReadLabel_OS <- as.factor(unlist(foreach(i = 1:length(FeatureTables)) %do% {
+  ReadLabel_OS <- as.factor(unlist(foreach::foreach(i = 1:length(FeatureTables) ) %do% {
     IDFromFeatureFileName <- GetOSid(FeatureFiles[i])
     return(rep(OSlabels[grep(paste(IDFromFeatureFileName,"$",sep=""),names(OSlabels))],nrow(FeatureTables[[i]]) ) )
   }))
   FeatureTables_rownames[,ReadOSLabel:=list(ReadOSLabel=ReadLabel_OS)]
 
   # join features files
-  FeatureTables <- rbindlist(FeatureTables)
+  FeatureTables <- data.table::rbindlist(FeatureTables)
 
   # Convert back to pure data.frame
   FeatureTables <- data.frame(FeatureTables)

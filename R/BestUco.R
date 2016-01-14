@@ -5,6 +5,7 @@
 #' @param Strand Strand ('r' = reverse strand, 'f' =  forward strand)
 #' @return Returns a data.frame of the codon usage, i.e. the relative frequency of each codon (columns), for each sequence (rows)
 #' @seealso \code{\link{seqinr::uco}}
+#' @author Carlus Deneke
 BestUco <- function(Seq,Frame,Strand){
   # require(seqinr)
 

@@ -7,7 +7,6 @@
 CreateFeaturesFromReads(Reads, NT_kmax = 4, SymmetricFeatures = T,
   Do.NTMotifs = F, NTMotifs = NULL, AllowedMismatches = 0,
   bothStrands = T, Do.SpacedWords = T, k.spaced = 4, l.spaced = 6,
-  SingleSpacerPattern = 0, combineSpacerPatterns = T,
   Do.PeptideFeatures = T, Do.MonoPep = T, Do.DiPep = T, Do.AAprops = T,
   Do.AAindex = T, AAindex_Selection = NULL, Do.UCO = T,
   Do.PepPatterns = F, Patterns = NULL, SearchPatternsSixFrame = F,
@@ -29,10 +28,6 @@ CreateFeaturesFromReads(Reads, NT_kmax = 4, SymmetricFeatures = T,
 \item{k.spaced}{Specify the word length}
 
 \item{l.spaced}{Specify the word length including spacers}
-
-\item{SingleSpacerPattern}{Integer value to pick a single spacer pattern of all possible patterns}
-
-\item{combineSpacerPatterns}{combine different patterns: combine column wise: add}
 
 \item{Do.PeptideFeatures}{Should the DNA sequence be translated and peptide features be computed?}
 
@@ -67,7 +62,7 @@ Make Stats from DNAString object, based on nucleotide sequence itself and the be
 }
 \examples{
 data(ReadData)
-CreateFeaturesFromReads (Reads = ReadData)
+CreateFeaturesFromReads (Reads = ReadData,NT_kmax = 3)
 }
 \author{
 Carlus Deneke

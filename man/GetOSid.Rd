@@ -6,7 +6,16 @@
 \usage{
 GetOSid(x)
 }
+\arguments{
+\item{A}{string containing an NCBI project accession (e.g. xxxPRJNA1752xxx)}
+}
+\value{
+Returns a string with the extracted NCBI project accession
+}
 \description{
 Extract the Organism ID (PRJNA accession)
+}
+\author{
+Carlus Deneke
 }
 

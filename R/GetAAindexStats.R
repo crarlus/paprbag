@@ -6,6 +6,7 @@
 #' @references Adapted from aaindex in seqinr
 #' @references Please cite the following references when making use of the database:
 #' @references Kawashima, S. and Kanehisa, M. (2000) AAindex: amino acid index database. Nucleic Acids Res., 28:374.
+#' @author Carlus Deneke
 GetAAindexStats <- function(AAfreq,AAindex_Selection){
 
   data(AAindexData)

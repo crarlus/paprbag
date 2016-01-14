@@ -4,14 +4,14 @@
 \alias{SaveFeatureFile}
 \title{Save Features into Rdata file}
 \usage{
-SaveFeatureFile(Filename, Features, Path2File, Backup = T)
+SaveFeatureFile(Filename, Features, savePath, Backup = F)
 }
 \arguments{
 \item{Filename}{The name of the orginal read file (e.g. *.fasta or *.mason)}
 
 \item{Features}{A data.frame containing the features}
 
-\item{Path2File}{Complete path to the location of the read fike}
+\item{savePath}{Complete path to where feature files should be saved}
 
 \item{Backup}{Should old feature file be backed up?}
 }
@@ -23,5 +23,8 @@ Save Features into Rdata file
 }
 \details{
 Save the Features generated from the ReadFile. It will be saved in a folder "Features" which is located in the same diectorory as the location of the Readfile. A backup will be saved in the subdirectory 'Backup'.
+}
+\author{
+Carlus Deneke
 }
 

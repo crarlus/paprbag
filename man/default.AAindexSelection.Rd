@@ -12,4 +12,7 @@ Prints the default selection of aaindices and their description in data.frame fo
 \description{
 Print the default selection of aaindices and their description
 }
+\author{
+Carlus Deneke
+}
 

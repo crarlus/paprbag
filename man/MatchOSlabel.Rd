@@ -17,4 +17,7 @@ Returns a vector of labels of the queried ids
 \description{
 Match the OSid (Bioproject id) to a vector of
 }
+\author{
+Carlus Deneke
+}
 

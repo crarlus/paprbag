@@ -17,4 +17,7 @@ A data.frame object containing the frequencies (columns) for the submitted seque
 \description{
 Get the frequency of di-peptides
 }
+\author{
+Carlus Deneke
+}
 

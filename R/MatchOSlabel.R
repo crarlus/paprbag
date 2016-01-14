@@ -2,6 +2,7 @@
 #' @param OSid A vector of query ids
 #' @param OSlabels A vector with label information named with the corresponding ids
 #' @return Returns a vector of labels of the queried ids
+#' @author Carlus Deneke
 MatchOSlabel <- function(OSid,OSlabels) {
   OSlabels[match(OSid,names(OSlabels))]
 }

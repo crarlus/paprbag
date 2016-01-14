@@ -21,4 +21,7 @@ The ologonuleotide frequency for each sequence submitted for the choice of k
 \description{
 Obtain the frequency of oligonucleotides in a DNA sequence for different k-mer sizes
 }
+\author{
+Carlus Deneke
+}
 

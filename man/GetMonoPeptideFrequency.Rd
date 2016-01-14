@@ -17,4 +17,7 @@ A data.frame object containing the frequencies (columns) for the submitted seque
 \description{
 Get the Frequency of each amino acid
 }
+\author{
+Carlus Deneke
+}
 

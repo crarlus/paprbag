@@ -2,6 +2,8 @@
 #' @param Features The original feature table as data.frame
 #' @param SelectedFeatures Either a numerical vector containing columns to be selected or a vector of character strings to select groups of features
 #' @return The subsetted feature table as data.frame
+#' @author Carlus Deneke
+#' @family TrainingFunctions
 SelectFeatureSubset <- function(Features,SelectedFeatures){
 
   if(is.numeric(SelectedFeatures)){

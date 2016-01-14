@@ -22,13 +22,23 @@
 "AAindexData"
 
 #' Amino acid properties
-"AAprops"
+#' list of amino acid with properties tiny, small, aliphatic, aromatic, non.polar, polar, charged, basic and acidic
+#' @seealso seqinr package
+"AAproperty"
 
+#' Genomic Motifs
 #' 100 most frequent 8-mers in bacterial genomes
 "GenomicMotifs"
 
 #' Prosite patterns
+#' @details 20 frequent prosite motifs
+#' @source http://prosite.expasy.org/prosite_ref.html
+#' @references
+#' Sigrist CJA, de Castro E, Cerutti L, Cuche BA, Hulo N, Bridge A, Bougueleret L, Xenarios I.
+#' New and continuing developments at PROSITE
+#' Nucleic Acids Res. 2012; doi: 10.1093/nar/gks1067
 "prosite_Top20"
 
 #' Example read data
+#' @details 21 read sequences of length 125 in "DNAStringSet" format
 "ReadData"

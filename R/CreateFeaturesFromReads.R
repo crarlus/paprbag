@@ -9,8 +9,6 @@
 #' @param Do.SpacedWords Should the occurrence of spaced words be computed?
 #' @param k.spaced Specify the word length
 #' @param l.spaced Specify the word length including spacers
-#' @param SingleSpacerPattern Integer value to pick a single spacer pattern of all possible patterns
-#' @param combineSpacerPatterns combine different patterns: combine column wise: add
 #' @param Do.PeptideFeatures Should the DNA sequence be translated and peptide features be computed?
 #' @param Do.DiPep Should the monopeptide frequency be computed?
 #' @param Do.DiPep Should the dipeptide frequency be computed?
@@ -25,9 +23,10 @@
 #' @return A data.frame containing the different features as columns. Each row repesents a DNA-string
 #' @examples
 #' data(ReadData)
-#' CreateFeaturesFromReads (Reads = ReadData)
+#' CreateFeaturesFromReads (Reads = ReadData,NT_kmax = 3)
 #' @author Carlus Deneke
 #' @export
+#' @importFrom foreach %do%
 CreateFeaturesFromReads <- function(Reads,
                                     NT_kmax = 4,
                                     SymmetricFeatures = T,
@@ -38,8 +37,6 @@ CreateFeaturesFromReads <- function(Reads,
                                     Do.SpacedWords = T,
                                     k.spaced = 4,
                                     l.spaced = 6,
-                                    SingleSpacerPattern = 0,
-                                    combineSpacerPatterns = T,
                                     Do.PeptideFeatures = T,
                                     Do.MonoPep = T,
                                     Do.DiPep = T,
@@ -54,9 +51,9 @@ CreateFeaturesFromReads <- function(Reads,
                                     AggregatePatterns = F
 ) {
 
-  require(seqinr, quietly = T)
-  require(Biostrings, quietly = T)
-  require(foreach, quietly = T)
+#  require(seqinr, quietly = T)
+#  require(Biostrings, quietly = T)
+#  require(foreach, quietly = T)
 
   # select features
   # default:
@@ -66,24 +63,23 @@ CreateFeaturesFromReads <- function(Reads,
 
   # 1. Nucleotide frequencies
 
-  Features <- data.frame(do.call(cbind,foreach(k = 1:NT_kmax) %do% GetOligonucleotideFrequency(Reads, k = k, prob=T, symmetric = SymmetricFeatures) ) )
+  Features <- data.frame(do.call(cbind,foreach::foreach(k = 1:NT_kmax) %do% GetOligonucleotideFrequency(Reads, k = k, prob=T, symmetric = SymmetricFeatures) ) )
 
   # -----
   # 2. Motifs
 
   if(Do.NTMotifs ==  T & is.character(NTMotifs) ) {
 
-    MotifCount <- data.frame(do.call(cbind,lapply(NTMotifs,function(pattern) vcountPattern(pattern = pattern,subject = Reads, fixed = T, max.mismatch=AllowedMismatches) ) ) )
+    MotifCount <- data.frame(do.call(cbind,lapply(NTMotifs,function(pattern) Biostrings::vcountPattern(pattern = pattern,subject = Reads, fixed = T, max.mismatch=AllowedMismatches) ) ) )
 
     if(bothStrands == T) {
 
-      require(seqinr)
-      MotifCount_revcomp <- data.frame(do.call(cbind,lapply(NTMotifs,function(pattern) vcountPattern(pattern = c2s(rev(comp(s2c(pattern)))),subject = Reads, fixed = T, max.mismatch=AllowedMismatches) ) ) )
+      MotifCount_revcomp <- data.frame(do.call(cbind,lapply(NTMotifs,function(pattern) Biostrings::vcountPattern(pattern = c2s(rev(comp(s2c(pattern)))),subject = Reads, fixed = T, max.mismatch=AllowedMismatches) ) ) )
 
       MotifCount <- MotifCount+MotifCount_revcomp
 
       # Correct double counting of Majorana sequences
-      Majoranas <- which(NTMotifs == sapply(NTMotifs, function(x) c2s(rev(comp(s2c(x))))) )
+      Majoranas <- which(NTMotifs == sapply(NTMotifs, function(x) seqinr::c2s(rev(seqinr::comp(seqinr::s2c(x))))) )
       MotifCount[,Majoranas] <- MotifCount[,Majoranas] / 2
     }
 
@@ -93,7 +89,7 @@ CreateFeaturesFromReads <- function(Reads,
 
   # 3. Spaced-word counts
   if(Do.SpacedWords == T){
-    SpacedWords.Counts <- Count.SpacedWords (Reads = Reads,k = k.spaced,l = l.spaced, SinglePattern = SingleSpacerPattern, combinePatterns = combineSpacerPatterns, symmetric = SymmetricFeatures )
+    SpacedWords.Counts <- Count.SpacedWords (Reads = Reads,k = k.spaced,l = l.spaced, symmetric = SymmetricFeatures )
     Features <- cbind(Features,SpacedWords.Counts)
   }
 
@@ -105,7 +101,6 @@ CreateFeaturesFromReads <- function(Reads,
 
     # 0. Find best translation (aka with fewest stop codons)
     BestTranslation <- suppressWarnings(GetBestTranslatedSequence(Reads) )
-    #  if(length(BestTranslation) !=4) stop("BestTranslation has wrong length") else print("BestTranslation is valid")
 
     # 1. Peptide frequency
     if(Do.MonoPep) {

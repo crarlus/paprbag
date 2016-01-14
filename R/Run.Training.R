@@ -18,7 +18,8 @@
 #' Run.Training (Path2FeatureFile = Path2FeatureFile, Path2LabelFile = Path2LabelFile, SelectedFeatures = NULL, savePath = savePath, ReturnForest = F, verbose = T, min.node.size = 1, num.trees = 100, mtry = NULL, importance = 'impurity', num.threads = NULL)
 #' }
 #' @export
-
+#' @author Carlus Deneke
+#' @family TrainingFunctions
 Run.Training <- function(Path2FeatureFile, Path2LabelFile = NULL, SelectedFeatures = NULL, savePath = NULL, ReturnForest = F, verbose = T, min.node.size = 1, num.trees = 100, mtry = NULL, importance = 'impurity', num.threads = NULL, ...){
 
 
@@ -28,7 +29,7 @@ Run.Training <- function(Path2FeatureFile, Path2LabelFile = NULL, SelectedFeatur
   # load dependencies
   #require(foreach, quietly = T)
   #require(data.table, quietly = T)
-  require(ranger)
+  # require(ranger)
 
 
   # read in features

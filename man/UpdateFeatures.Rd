@@ -4,14 +4,23 @@
 \alias{UpdateFeatures}
 \title{Update all features in a specified folder}
 \usage{
-UpdateFeatures(Path2File, Cores = 1, Backup = T, ...)
+UpdateFeatures(Path2File, savePath = Path2File, Cores = 1, Backup = T,
+  pattern = "fasta$|mason$", verbose = T, ...)
 }
 \arguments{
 \item{Path2File}{A path to the location of the read files}
 
+\item{savePath}{Path where features should be saved to}
+
 \item{Cores}{Multicore functionality for linux systems.}
 
 \item{Backup}{Do you want to backup old features}
+
+\item{pattern}{File extension of read files. Used as regex filter (default "fasta$|mason$")}
+
+\item{verbose}{Write a logfile ("FeatureCreation.log") and verbose output}
+
+\item{...}{Parameters passed to function CreateFeaturesFromReads}
 
 \item{AAindex_Selection}{Parameter for Features}
 }
@@ -20,5 +29,11 @@ Returns TRUE if completed
 }
 \description{
 Update all features in a specified folder. Save features in subfolder "Features". Backup old features if desired.
+}
+\author{
+Carlus Deneke
+}
+\seealso{
+Wraps \code{\link{CreateFeaturesFromReads}}
 }
 

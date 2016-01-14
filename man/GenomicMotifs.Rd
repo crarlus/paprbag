@@ -3,12 +3,14 @@
 \docType{data}
 \name{GenomicMotifs}
 \alias{GenomicMotifs}
-\title{100 most frequent 8-mers in bacterial genomes}
+\title{Genomic Motifs
+100 most frequent 8-mers in bacterial genomes}
 \format{An object of class \code{character} of length 100.}
 \usage{
 GenomicMotifs
 }
 \description{
+Genomic Motifs
 100 most frequent 8-mers in bacterial genomes
 }
 \keyword{datasets}

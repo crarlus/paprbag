@@ -17,4 +17,12 @@ Returns a data.frame of all possible patterns, row-by-row
 \description{
 Enumerate all possible patterns of spacers
 }
+\author{
+Carlus Deneke
+}
+\seealso{
+\link{CreateFeaturesFromReads}
+
+Other SpacedWordFeatures: \code{\link{Count.SpacedWords}}
+}
 

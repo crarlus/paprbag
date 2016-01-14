@@ -15,4 +15,7 @@ FALSE if found a NA value otherwise TRUE
 \description{
 Check valididity of feature table
 }
+\author{
+Carlus Deneke
+}
 

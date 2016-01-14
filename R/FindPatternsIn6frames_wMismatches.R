@@ -5,17 +5,18 @@
 #' @param Patterns Vector of patterns
 #' @param Prefix How should the columns of pattern matches be called
 #' @return A data.frame containing the matched patterns (columns)
+#' @author Carlus Deneke
 FindPatternsIn6frames_wMismatches <- function(Reads_Seq, Patterns, AllowedMismatches = 0, Prefix = "AAPattern"){
 
-  Reads_Seq_Biostrings_subseqs_f <- lapply(1:3, function(pos)  subseq(Reads_Seq, start=pos))
-  Reads_Seq_Biostrings_subseqs_r <- lapply(1:3, function(pos)  subseq(reverseComplement(Reads_Seq), start=pos))
+  Reads_Seq_Biostrings_subseqs_f <- lapply(1:3, function(pos)  Biostrings::subseq(Reads_Seq, start=pos))
+  Reads_Seq_Biostrings_subseqs_r <- lapply(1:3, function(pos)  Biostrings::subseq(Biostrings::reverseComplement(Reads_Seq), start=pos))
 
-  Reads_TranslatedSeq_bs_3frame_f <- lapply(Reads_Seq_Biostrings_subseqs_f, function(seq) Biostrings::translate(seq,if.fuzzy.codon="solve",genetic.code = getGeneticCode("11")) )
+  Reads_TranslatedSeq_bs_3frame_f <- lapply(Reads_Seq_Biostrings_subseqs_f, function(seq) Biostrings::translate(seq,if.fuzzy.codon="solve",genetic.code = Biostrings::getGeneticCode("11")) )
   f1 <- FindPatternsInAAseq_wMismatches(Reads_TranslatedSeq_bs_3frame_f[[1]], Patterns, AllowedMismatches = AllowedMismatches, Prefix = Prefix)
   f2 <- FindPatternsInAAseq_wMismatches(Reads_TranslatedSeq_bs_3frame_f[[2]], Patterns, AllowedMismatches = AllowedMismatches, Prefix = Prefix)
   f3 <- FindPatternsInAAseq_wMismatches(Reads_TranslatedSeq_bs_3frame_f[[3]], Patterns, AllowedMismatches = AllowedMismatches, Prefix = Prefix)
 
-  Reads_TranslatedSeq_bs_3frame_r <- lapply(Reads_Seq_Biostrings_subseqs_r, function(seq) Biostrings::translate(seq,if.fuzzy.codon="solve",genetic.code = getGeneticCode("11")) )
+  Reads_TranslatedSeq_bs_3frame_r <- lapply(Reads_Seq_Biostrings_subseqs_r, function(seq) Biostrings::translate(seq,if.fuzzy.codon="solve",genetic.code = Biostrings::getGeneticCode("11")) )
   f4 <- FindPatternsInAAseq_wMismatches(Reads_TranslatedSeq_bs_3frame_r[[1]], Patterns, AllowedMismatches = AllowedMismatches, Prefix = Prefix)
   f5 <- FindPatternsInAAseq_wMismatches(Reads_TranslatedSeq_bs_3frame_r[[2]], Patterns, AllowedMismatches = AllowedMismatches, Prefix = Prefix)
   f6 <- FindPatternsInAAseq_wMismatches(Reads_TranslatedSeq_bs_3frame_r[[3]], Patterns, AllowedMismatches = AllowedMismatches, Prefix = Prefix)

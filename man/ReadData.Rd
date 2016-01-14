@@ -11,5 +11,8 @@ ReadData
 \description{
 Example read data
 }
+\details{
+21 read sequences of length 125 in "DNAStringSet" format
+}
 \keyword{datasets}
 
