@@ -42,3 +42,29 @@
 #' Example read data
 #' @details 21 read sequences of length 125 in "DNAStringSet" format
 "ReadData"
+
+
+#' Standard configuration for feature extraction
+#' @details
+#' Choice of parameters:
+#'NT_kmax = 4,
+#'SymmetricFeatures = T,
+#'Do.NTMotifs = T,
+#'NTMotifs = NULL,
+#'AllowedMismatches = 1,
+#'Do.SpacedWords = T,
+#'k.spaced = 4,
+#'l.spaced = 6,
+#'Do.PeptideFeatures = T,
+#'Do.MonoPep = T,
+#'Do.DiPep = T,
+#'Do.AAprops = T,
+#'Do.AAindex = T,
+#'AAindex_Selection = NULL,
+#'Do.UCO = T,
+#'Do.PepPatterns = F,
+#'Patterns = NULL,
+#'SearchPatternsSixFrame = T,
+#'AllowedPeptideMismatches = 0,
+#'AggregatePatterns = F
+"Standard.configuration"
