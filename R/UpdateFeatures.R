@@ -28,7 +28,6 @@ UpdateFeatures <- function(Path2ReadFiles, savePath = file.path(Path2ReadFiles,"
     con = file(file.path(Path2ReadFiles,"FeatureCreation.log"), open = "a")
     sink(file=con, append=T, split=T)
     print(paste("New run for folder",Path2ReadFiles,"on",date() ))
-    print(sys.call())
   }
 
   if(verbose == T) StartTime <- proc.time()[3]
