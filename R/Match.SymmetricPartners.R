@@ -3,6 +3,8 @@
 #' @param seq A list of strings containing DNA sequences
 #' @return A vector of matching indices
 #' @author Carlus Deneke
+#' @importFrom seqinr s2c
+#' @importFrom seqinr c2s
 Match.SymmetricPartners <- function(seq){
   # require(seqinr, quietly = T)
   match(sapply(seq, function(x) seqinr::c2s(base::rev(seqinr::comp(seqinr::s2c(x)))) ),base::tolower(seq) )
