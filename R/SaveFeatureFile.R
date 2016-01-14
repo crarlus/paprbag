@@ -8,6 +8,9 @@
 #' @author Carlus Deneke
 SaveFeatureFile <- function(Filename, Features, savePath, Backup = F) {
 
+  # hack for R versions < 3.2:
+  if(!exists("dir.exists")) dir.exists <- function(x) file.exists(x)
+
   if(!dir.exists(file.path(savePath)) ) dir.create(file.path(savePath),showWarnings = F)
 
   OutputName <- paste("Features_",strsplit(tail(strsplit(Filename,"/")[[1]],1),".",fixed=T)[[1]][1],".rds",sep="")
