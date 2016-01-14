@@ -4,13 +4,14 @@
 \alias{UpdateFeatures}
 \title{Update all features in a specified folder}
 \usage{
-UpdateFeatures(Path2File, savePath = Path2File, Cores = 1, Backup = T,
-  pattern = "fasta$|mason$", verbose = T, ...)
+UpdateFeatures(Path2ReadFiles, savePath = file.path(Path2ReadFiles,
+  "Features"), Cores = 1, Backup = F, pattern = "fasta$|mason$",
+  verbose = T, ...)
 }
 \arguments{
-\item{Path2File}{A path to the location of the read files}
+\item{Path2ReadFiles}{A path to the location of the read files}
 
-\item{savePath}{Path where features should be saved to}
+\item{savePath}{Path where features should be saved to (default: Path2ReadFiles/Features)}
 
 \item{Cores}{Multicore functionality for linux systems.}
 

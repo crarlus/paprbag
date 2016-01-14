@@ -4,11 +4,14 @@
 \alias{Create.TrainingDataSet}
 \title{Create a new training data set}
 \usage{
-Create.TrainingDataSet(Path2Files = NULL, OSlabels = NULL,
-  savePath = NULL, CompressOption = T)
+Create.TrainingDataSet(Path2Files = NULL, pattern = "Features",
+  OSlabels = NULL, savePath = file.path(Path2Files, "TrainingData"),
+  CompressOption = T)
 }
 \arguments{
 \item{Path2Files}{A complete path to the read folder (i.e. it contains a subfolder 'Features')}
+
+\item{pattern}{A string providing a distinct search pattern for all feature files (default = "Features")}
 
 \item{OSlabels}{A vector containing either 'HP' or 'NP' together with the name attributes pointing to the Organism identifier (Bioproject ID)}
 
