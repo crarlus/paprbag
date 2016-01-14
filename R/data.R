@@ -68,3 +68,12 @@
 #'AllowedPeptideMismatches = 0,
 #'AggregatePatterns = F
 "Standard.configuration"
+
+#' Pathogenicity labels
+#' @details
+#' The set of labels for 4286 bacterial strains (481 non-pathogens and 3805 pathogens)
+#' TRUE means pathogenic and FALSE means non-pathogenic
+#' The species' bioproject accession is obtained by names(Labels)
+#' @references
+#' PaPrBag Paper
+"Labels"
