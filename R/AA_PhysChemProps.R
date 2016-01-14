@@ -5,7 +5,6 @@
 #' @seealso \code{\link[seqinr]{AAstat}}
 #' @references Adapted from package 'seqinr'.
 #' @author Carlus Deneke
-#' @import
 AA_PhysChemProps <- function(AAfreq){
 
   #require(seqinr)
