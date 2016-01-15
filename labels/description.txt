@@ -1,0 +1,22 @@
+Description of label table
+
+The table provides the inferred label information together with relevant genome metainformation.
+
+Column description:
+
+Unique identifier is given by column:
+Bioproject.Accession
+
+Taxonomy information is given in columns:
+Phylum,Class,Order,Family,Genus,Species,Strain
+
+Relevant columns for phenytype information:
+Phenotype,Relevance,Diseases,Host.Name,Ecosystem.Category,Habitat,Study.Name
+
+Inferred pathogen label and host information is given in columns:
+HumanHost,Pathogenic
+
+Source of metadata is the integrated microbial genome system (IMG):
+Markowitz, Victor M., et al. IMG 4 version of the integrated microbial genomes comparative analysis system. Nucleic acids research (2013): gkt963.
+
+Columns HumanHost and Pathogenic resulted from the set of rules described in the PaPrBaG manuscript.
