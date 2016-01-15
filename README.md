@@ -1,12 +1,21 @@
 # paprbag
-Pathogenicity prediction of bacterial genomes
+Pathogenicity prediction for bacterial genomes
 
 ## install
-````{r install}
+```{r install}
 
 # install.packages("devtools")
 library(devtools)
 devtools::install_github("crarlus/paprbag")
+
+%# prediction
+%# prediction from files
+
+%# extract features
+
+%# compile training database
+
+%# train classifier
 
 ```
 ## Label data
@@ -17,14 +26,6 @@ Large classifiers trained on the present data are provided in the R package papr
 https://github.com/crarlus/paprbag-data
 
 
-## usage
+## Basic usage
+coming soon ...
 
-# prediction
-
-# prediction from files
-
-# extract features
-
-# compile training database
-
-# train classifier
