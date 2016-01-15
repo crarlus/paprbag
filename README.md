@@ -8,14 +8,6 @@ Pathogenicity prediction for bacterial genomes
 library(devtools)
 devtools::install_github("crarlus/paprbag")
 
-%# prediction
-%# prediction from files
-
-%# extract features
-
-%# compile training database
-
-%# train classifier
 
 ```
 ## Label data
@@ -28,4 +20,3 @@ https://github.com/crarlus/paprbag-data
 
 ## Basic usage
 coming soon ...
-
