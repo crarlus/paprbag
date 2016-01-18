@@ -20,6 +20,7 @@
 #' @author Carlus Deneke
 #' @family TrainingFunctions
 #' @importFrom foreach %do%
+#' @importFrom data.table :=
 Create.TrainingDataSet <- function(Path2Files = NULL,pattern="Features",OSlabels = NULL, savePath = file.path(Path2Files,"TrainingData"),CompressOption = T){
 
   # require(foreach, quietly = T)
