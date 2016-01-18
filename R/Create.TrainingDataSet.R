@@ -25,6 +25,9 @@ Create.TrainingDataSet <- function(Path2Files = NULL,pattern="Features",OSlabels
   # require(foreach, quietly = T)
   # require(data.table, quietly = T)
 
+  # hack for R versions < 3.2:
+  if(!exists("dir.exists")) dir.exists <- function(x) file.exists(x)
+
   # Checks:
   if(is.null(Path2Files)) stop("Please submit a path pointing to the read folder")
   if(is.null(OSlabels)) stop("Please submit a vector containing the labels of all organisms")
@@ -35,7 +38,6 @@ Create.TrainingDataSet <- function(Path2Files = NULL,pattern="Features",OSlabels
 
   # list feature files & select subset
   FeatureFiles <- list.files(file.path(Path2Files),pattern=pattern,full.names=T)
-  if(!is.null(SearchPatterns)) FeatureFiles <- unlist(lapply(SearchPatterns, function(pattern) grep(paste(pattern,"[_.]",sep=""),FeatureFiles,value=T,invert = F) ))
 
   if(length(FeatureFiles) == 0) stop("No feature files selected")
 
