@@ -77,3 +77,9 @@
 #' @references
 #' PaPrBag Paper
 "Labels"
+
+#' Example random forest
+#' @details
+#' Provided is a small random forest trained on a very small datasets of pathogens and non-pathogens.
+#' To be used for illustrative examples / tests only
+"forest"
