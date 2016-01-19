@@ -83,3 +83,7 @@
 #' Provided is a small random forest trained on a very small datasets of pathogens and non-pathogens.
 #' To be used for illustrative examples / tests only
 "forest"
+
+#' Example training data
+#' Provides a small set of training Data (combined label and feature table). First column name is "Labels", other column names indicate feature type
+"trainingData"

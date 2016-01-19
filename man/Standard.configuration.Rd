@@ -4,7 +4,7 @@
 \name{Standard.configuration}
 \alias{Standard.configuration}
 \title{Standard configuration for feature extraction}
-\format{An object of class \code{list} of length 20.}
+\format{An object of class \code{list} of length 21.}
 \usage{
 Standard.configuration
 }
