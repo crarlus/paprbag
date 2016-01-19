@@ -4,7 +4,7 @@
 \name{Labels}
 \alias{Labels}
 \title{Pathogenicity labels}
-\format{An object of class \code{logical} of length 3019.}
+\format{An object of class \code{logical} of length 2836.}
 \usage{
 Labels
 }
