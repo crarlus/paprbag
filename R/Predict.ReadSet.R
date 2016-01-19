@@ -33,7 +33,7 @@ Predict.ReadSet <- function(ForestObject, ReadObject, Feature.Configuration = NU
   # create features
     if(verbose) Time1 <- proc.time()
     Features <- CreateFeaturesFromReads (ReadObject,
-                                          NT_kmax = Feature.Configuration$kmax,
+                                          NT_kmax = Feature.Configuration$NT_kmax,
                                           SymmetricFeatures = Feature.Configuration$Symmetric,
                                           Do.NTMotifs = Feature.Configuration$Do.NTMotifs,
                                           NTMotifs = Feature.Configuration$NTMotifs,
@@ -42,8 +42,6 @@ Predict.ReadSet <- function(ForestObject, ReadObject, Feature.Configuration = NU
                                           Do.SpacedWords = Feature.Configuration$Do.SpacedWords,
                                           k.spaced = Feature.Configuration$k.spaced,
                                           l.spaced = Feature.Configuration$l.spaced,
-                                          SingleSpacerPattern = Feature.Configuration$SingleSpacerPattern,
-                                          combineSpacerPatterns = Feature.Configuration$combineSpacerPatterns,
                                           Do.PeptideFeatures = Feature.Configuration$Do.PeptideFeatures,
                                           Do.MonoPep = Feature.Configuration$Do.MonoPep,
                                           Do.DiPep = Feature.Configuration$Do.DiPep,

@@ -28,7 +28,7 @@ IdentifyFeatures.FromForest <- function(ForestObject, verbose = F){
   }
 
   # determine feature conf
-  Feature.Configuration$kmax <- kmax
+  Feature.Configuration$NT_kmax <- kmax
   Feature.Configuration$Symmetric <- any(grepl("Mono_A_T",Features))
   Feature.Configuration$Do.NTMotifs <- any(FeatureGroups == "Motifs")
   Feature.Configuration$NTMotifs <- sub("Motifs_","",grep("Motifs_",Features,value=T))

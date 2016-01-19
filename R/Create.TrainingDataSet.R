@@ -43,7 +43,7 @@ Create.TrainingDataSet <- function(Path2Files = NULL,pattern="Features",OSlabels
   if(length(FeatureFiles) == 0) stop("No feature files selected")
 
   # read in feature files
-  FeatureTables <- foreach::foreach(i=1:length(FeatureFiles)) %do% { readRDS(FeatureFiles[i]) }
+  FeatureTables <- lapply(FeatureFiles,readRDS)
 
   # extract OS names
   FeatureTables_rownames <-  data.table::rbindlist(lapply(FeatureTables,function(x) data.frame(FullName=rownames(x),stringsAsFactors = F) ) )
