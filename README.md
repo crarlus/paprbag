@@ -51,7 +51,7 @@ mean(Prediction$predictions[,"TRUE"])
 
 #### Operate prediction via file paths
 ``` R
-Predict.ReadSet.fromFiles (Path2Forest, Path2ReadFiles, saveLocation, OutputFilename = OutputFilename, Return.Predictions = F, Save.AsTSV = F, verbose = T, num.threads = 1)
+Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2ReadFiles, saveLocation = saveLocation, OutputFilename = OutputFilename, Return.Predictions = F, Save.AsTSV = F, verbose = T, num.threads = 1)
 
 ```
 
@@ -96,7 +96,7 @@ Join all feature files in a directory and create read labels for every data row 
 ___
 ### Training
 
-Train a pathogenocity classifier from a set of feature data together with read label information
+Train a pathogenicity classifier from a set of feature data together with read label information
 
 
 ```R
