@@ -33,6 +33,9 @@ Large classifiers trained on the present data are provided in the R package [dat
 ### Make prediction from read set
 
 ```R
+library(paprbag)
+library(ranger) # load ranger package explicitly
+
 
 data("ReadData")
 # Or read in sequence data via Biostrings::readDNAStringSet()
