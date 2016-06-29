@@ -10,6 +10,15 @@ Its strength lies in the prediction of novel, unknown bacterial pathogens.
 devtools::install_github("crarlus/paprbag")
 
 ```
+
+Note that due to changes in base::capabilities() for R >= 3.2, installing the package via devtools (version 1.12.0) and R (version <= 3.1) might throw an error
+```
+Installing paprbag
+Error in if (capabilities("libcurl")) { : argument is of length zero
+```
+This issue has been addressed in [https://github.com/hadley/devtools/issues/1244]. Until it is fixed, either use an older version of devtools (<= 1.10) or install the package manually from source.
+
+
 _(Installation might require some time due to the package's dependencies)_
 
 ***
