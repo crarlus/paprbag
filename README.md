@@ -138,3 +138,30 @@ forest <- Run.Training (Path2FeatureFile = Path2FeatureFile, Path2LabelFile = Pa
 
 ```
 
+#### Training a classifier with other types of label data
+As mentioned in the original publication, PaPrBaG is not restricted for classification of pathogens only. 
+
+> It is rather a general workflow for the classification of labeled genomes, potential further applications range from
+bacterial host and habitat prediction, taxonomic classification to human and microbial read separation
+
+Basically the same workflows as described here can be applied and also the features need not be re-calculated. It suffices to 
+- either provide a new path to a label file _Path2NewLabelFile_ with labels for every data row in _Path2FeatureFile_
+```R
+Run.Training (Path2FeatureFile = Path2FeatureFile, Path2LabelFile = Path2NewLabelFile, savePath = NewsavePath)
+```
+- or manipulate the column "Labels" in the data.frame "Path2FeatureFile". E.g.
+```
+trainingData$Labels <- as.factor(c(rep("NewLabel_A",floor(nrow(trainingData)/2)),rep("NewLabel_B",ceiling(floor(nrow(trainingData)/2)) )) )
+saveRDS(trainingData, NewPath2FeatureFile) # save 
+Run.Training (Path2FeatureFile = NewPath2FeatureFile, savePath = NewsavePath)
+```
+
+In case that read labels are not yet available, a new training set based on the new labels can be obtained via the command
+```R
+Create.TrainingDataSet (Path2Files = "Features", pattern="Features",OSlabels = NewLabels, savePath = "TrainingData")
+```
+A proper vector _NewLabels_ containing two (or more) labels (e.g. 'TRUE' or 'FALSE') together with the name attributes pointing to the Organism identifier (Bioproject ID) is required.
+It outputs a file "ReadLabel_OS.rds" in the _savePath_ which can be used for running the function _Run.Training_ subsequently.
+
+Predictions obtained from the newly trained classifier provide classification according to the new label.
+
