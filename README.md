@@ -2,14 +2,32 @@
 **Pa**thogenicity **pr**ediction for **ba**cterial **g**enomes is a random forest based method for the assessment of the pathogenic potential of a set of reads belonging to a single genome.
 Its strength lies in the prediction of novel, unknown bacterial pathogens.
 
+The related paper is available at https://www.nature.com/articles/srep39194
+
 ***
 
 ## Install
 ```r
-# install.packages("devtools")
+# install.packages("devtools") # install devtools
 devtools::install_github("crarlus/paprbag")
 
 ```
+
+Note that ranger is not forward compatible. Therefore, the toy data and trained models provided here rely on ranger version 0.3. You can obtain and install this version via
+
+```r
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/ranger/ranger_0.3.0.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
+```
+
+You can check which version of ranger is loaded in your workspace via
+```r
+packageVersion("ranger")
+```
+
+We plan to provide a self-contained conda package to facilitate the installation in the near future!
+
+### Older issues (resolved)
 
 Note that due to changes in base::capabilities() for R >= 3.2, installing the package via devtools (version 1.12.0) and R (version <= 3.1) might throw an error
 ```
