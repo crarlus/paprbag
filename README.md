@@ -109,15 +109,15 @@ library(paprbag)
 library(ranger)
 
 # download forest from release
-# use wget 
-# OR
-# use R
+# e.g. using wget in linux:
+# wget https://github.com/crarlus/paprbag/releases/download/2.0/classifier_all.rds
+# or using your browser
 
-# define forest
-Path2Forest <- file.path(forestDir_nuc,"all","randomForest.rds")
-Path2Forest <- path/to/forest # define your path
 
-# define prediction data
+# define your path to the previously saved forest
+Path2Forest <- path/to/forest
+
+# define independent prediction data
 Path2ReadFiles <- path/to/independent_test_data_in_fasta_format
 
 # define output
@@ -146,7 +146,7 @@ ReadData_real <- Biostrings::readDNAStringSet(Readfile)
 # predict
 Prediction_forest_nuc_realdata <- Predict.ReadSet (ForestObject = forest_large <- , ReadObject = ReadData_real, Feature.Configuration = NULL, verbose = T, num.threads = 20)
 ```
-* note: the prediction function can be called with a number of threads via the num.threads option, however it still predicts read per read in a linear fashion. If a number of cores is available, the prediction process can be sped up by diving the reads in read chunks and joining the prediction results. Aka _Embarrassingly parallel problem_.
+* note: the prediction function can be called with a number of threads via the num.threads option, however it still predicts read per read in a linear fashion. If a number of cores is available, the prediction process can be sped up by diving the reads in read chunks and joining the prediction results.
 
 
 ### Quick evaluation
