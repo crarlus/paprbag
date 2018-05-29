@@ -2,6 +2,10 @@
 **Pa**thogenicity **pr**ediction for **ba**cterial **g**enomes is a random forest based method for the assessment of the pathogenic potential of a set of reads belonging to a single genome.
 Its strength lies in the prediction of novel, unknown bacterial pathogens.
 
+
+*** Notes
+
+
 ***
 
 ## Install
@@ -10,16 +14,23 @@ Its strength lies in the prediction of novel, unknown bacterial pathogens.
 devtools::install_github("crarlus/paprbag")
 
 ```
-
-Note that due to changes in base::capabilities() for R >= 3.2, installing the package via devtools (version 1.12.0) and R (version <= 3.1) might throw an error
-```
-Installing paprbag
-Error in if (capabilities("libcurl")) { : argument is of length zero
-```
-This issue has been addressed in [https://github.com/hadley/devtools/issues/1244]. Until it is fixed, either use an older version of devtools (<= 1.10) or install the package manually from source.
-
-
 _(Installation might require some time due to the package's dependencies)_
+
+Due to changes of the dependencies, some problems occurred when installing paprbag and using the original data. In particular, different ranger versions are not compatible. Since the original data were trained with ranger 0.3 they can only be used when the same ranger version is installed on your system.
+
+The original version of paprbag is still available under the (legacy)[link] branch.
+
+The data made available in this branch, as well as the release data, should work with recent ranger versions. For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the (release)[link]
+
+They can be installed via
+```R
+# Download the bundle
+path2bundle <- "/path/to/bundle/" 
+packrat::unbundle(bundle=path2bundle, where="/path/to/my/project")
+```
+See (here)[https://rstudio.github.io/packrat/] and here[https://www.r-bloggers.com/creating-reproducible-software-environments-with-packrat/] for more details about packrat.
+
+The packages versions are also listed (here)[link]. They were installed under R version x.
 
 ***
 
@@ -30,8 +41,9 @@ The label data together with the strain's Bioproject accession can be accessed b
 
 ***
 
-## More data
-Large classifiers trained on the present data are provided in the R package [data4paprbag](https://github.com/crarlus/data4paprbag).
+## Original data
+The large classifiers used in the publication are provided in the R package [data4paprbag](https://github.com/crarlus/data4paprbag). They were trained with ranger version 0.3. 
+Current data is available in the (release tab)[link]
 
 
 ***
@@ -66,6 +78,100 @@ mean(Prediction$predictions[,"TRUE"])
 Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2ReadFiles, saveLocation = saveLocation, OutputFilename = OutputFilename, Return.Predictions = F, Save.AsTSV = F, verbose = T, num.threads = 1)
 
 ```
+___
+### Predicting real data
+In this section, we describe how paprbag can be applied to real data based on the pre-trained forests located in the release.
+
+#### Available data
+
+The following forests are available in the release tab:
+* (classifier_all.rds)[Link]: Classifier that was trained on all data described in paprbag; only nucleotide features (faster)
+* (classifier_all_includingPeptideFeatures.rds)[Link]: Classifier that was trained on all data described in paprbag; including peptide features (slower)
+
+Furthermore, the forests related to the 5-fold cross validation in (paprbag)[link] can be found here:
+* (classifier_fold1.rds)[Link]: Classifier based on training fold 1
+* (classifier_fold2.rds)[Link]: Classifier based on training fold 2
+* (classifier_fold3.rds)[Link]: Classifier based on training fold 3
+* (classifier_fold4.rds)[Link]: Classifier based on training fold 4
+* (classifier_fold5.rds)[Link]: Classifier based on training fold 5
+
+*
+
+``` R
+library(paprbag)
+library(ranger)
+
+# download forest from release
+# use wget 
+# OR
+# use R
+
+# define forest
+Path2Forest <- file.path(forestDir_nuc,"all","randomForest.rds")
+Path2Forest <- path/to/forest # define your path
+
+# define prediction data
+Path2ReadFiles <- path/to/independent_test_data_in_fasta_format
+
+# define output
+OutputFilename <- "prediction_paprbag"
+saveLocation <- "Predictions/example"
+
+Predictions_paprbag <- Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2ReadFiles, saveLocation = saveLocation, OutputFilename = OutputFilename, Return.Predictions = T, Save.AsTSV = F, num.threads = 20, verbose = T)
+```
+#### alternative: loading forest and read data into R
+* Use case: Avoids re-loading of large forests when predicting many fasta files
+
+``` R
+
+library(paprbag)
+library(ranger)
+
+# download forest from release
+
+# load forest
+forest_large <- readRDS(file.path(forest_nuc))
+
+# read file
+Readfile <- Readfiles[1]
+ReadData_real <- Biostrings::readDNAStringSet(Readfile)
+
+# predict
+Prediction_forest_nuc_realdata <- Predict.ReadSet (ForestObject = forest_large <- , ReadObject = ReadData_real, Feature.Configuration = NULL, verbose = T, num.threads = 20)
+```
+* note: the prediction function can be called with a number of threads via the num.threads option, however it still predicts read per read in a linear fashion. If a number of cores is available, the prediction process can be sped up by diving the reads in read chunks and joining the prediction results. Aka _Embarrassingly parallel problem_.
+
+
+#### Quick evaluation
+
+``` R
+hist(Prediction_forest_nuc_realdata$predictions[,2])
+mean(Prediction_forest_nuc_realdata$predictions[,2])
+
+ifelse(mean(Prediction_forest_nuc_realdata$predictions[,2])> 0.5, "Pathogenic", "Non-Pathogenic")
+
+```
+
+
+
+#### Feature configuration
+
+
+The value of `Feature.Configuration` can be set to the Configuration of the function `Predict.ReadSet`. You can pass a config varibable via:
+
+```R
+# load standard configuration; used in toy forest and classifier_all.rds, classifier_fold1.rds, etc.
+data("Standard.configuration") 
+# load standard configuration including peptide features; used in forest classifier_all_includingPeptideFeatures.rds
+data("Standard.configuration_peptides") 
+# infer feature configuration directly from forest
+my.configuration <- paprbag:::IdentifyFeatures.FromForest(ForestObject = forest_new)
+```
+
+
+
+
+
 
 ___
 

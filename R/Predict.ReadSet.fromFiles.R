@@ -12,7 +12,7 @@
 #' @seealso \link{Predict.ReadSet}
 #' @export
 #' @author Carlus Deneke
-Predict.ReadSet.fromFiles <- function(Path2Forest, Path2ReadFiles, saveLocation, OutputFilename = "Output", Return.Predictions = F, Save.AsTSV = F, ...){
+Predict.ReadSet.fromFiles <- function(Path2Forest, Path2ReadFiles, saveLocation, OutputFilename = "Output", Return.Predictions = F, Save.AsTSV = F, verbose = T, ...){
 
   # require(Biostrings)
 
