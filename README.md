@@ -11,7 +11,7 @@ The related paper is available at https://www.nature.com/articles/srep39194
 
 
 
-* link to [Cucumber](#cucumber)
+* link to [Cucumber](##cucumber)
 
 
 
@@ -47,7 +47,7 @@ See [here](https://rstudio.github.io/packrat/) and [here](https://www.r-bloggers
 The packages versions are also listed [here](https://github.com/crarlus/paprbag/releases/download/2.0/packrat.lock). They were installed under R version 3.4.4.
 
 ***
-# cucumber
+## cucumber
 
 ## Label data
 The resource of the inferred pathogenicity labels can be found in [labels](https://github.com/crarlus/paprbag/tree/master/labels)
