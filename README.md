@@ -2,9 +2,12 @@
 **Pa**thogenicity **pr**ediction for **ba**cterial **g**enomes is a random forest based method for the assessment of the pathogenic potential of a set of reads belonging to a single genome.
 Its strength lies in the prediction of novel, unknown bacterial pathogens.
 
+The related paper is available at https://www.nature.com/articles/srep39194
 
-*** Notes
+*** News
 
+* New forestes were trained with a new version of ranger and are available in the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
+* The new section [read date](realdata)
 
 ***
 
@@ -20,7 +23,10 @@ Due to changes of the dependencies, some problems occurred when installing paprb
 
 The original version of paprbag is still available under the [legacy](https://github.com/crarlus/paprbag/tree/legacy) branch.
 
-The data made available in this branch, as well as the release data, should work with recent ranger versions. For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
+The data made available in this branch, as well as the release data, should work with recent ranger versions. 
+
+
+For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
 
 They can be installed via
 ```R
@@ -30,7 +36,7 @@ packrat::unbundle(bundle=path2bundle, where="/path/to/my/project")
 ```
 See [here](https://rstudio.github.io/packrat/) and [here](https://www.r-bloggers.com/creating-reproducible-software-environments-with-packrat/) for more details about packrat.
 
-The packages versions are also listed (here)[link]. They were installed under R version x.
+The packages versions are also listed [here](https://github.com/crarlus/paprbag/releases/download/2.0/packrat.lock). They were installed under R version 3.4.4.
 
 ***
 
@@ -79,7 +85,8 @@ Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2Read
 
 ```
 ___
-## Predicting real data
+
+[realdata](## Predicting real data)
 In this section, we describe how paprbag can be applied to real data based on the pre-trained forests located in the release.
 
 ### Available data
@@ -94,8 +101,6 @@ Furthermore, the forests related to the 5-fold cross validation in (paprbag)[lin
 * [classifier_fold3.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold3.rds): Classifier based on training fold 3
 * [classifier_fold4.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold4.rds): Classifier based on training fold 4
 * [classifier_fold5.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold5.rds): Classifier based on training fold 5
-
-*
 
 ``` R
 library(paprbag)
@@ -175,6 +180,7 @@ And set e.g. `Feature.Configuration = Standard.configuration`
 
 
 ___
+## Advanced usage 
 
 ### Feature extraction
 Extract features from a set of reads
