@@ -7,14 +7,7 @@ The related paper is available at https://www.nature.com/articles/srep39194
 *** News
 
 * New forestes were trained with a new version of ranger and are available in the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
-* The new section [Predicting real data](realdata)
-
-
-
-* link to [Cucumber](#cucumber)
-
-
-
+* The new section [Predicting real data](#Predicting-real-data)
 
 
 ***
@@ -47,7 +40,6 @@ See [here](https://rstudio.github.io/packrat/) and [here](https://www.r-bloggers
 The packages versions are also listed [here](https://github.com/crarlus/paprbag/releases/download/2.0/packrat.lock). They were installed under R version 3.4.4.
 
 ***
-## cucumber
 
 ## Label data
 The resource of the inferred pathogenicity labels can be found in [labels](https://github.com/crarlus/paprbag/tree/master/labels)
@@ -95,8 +87,7 @@ Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2Read
 ```
 ___
 
-[realdata](#Predicting-real-data)
-##Predicting-real-data
+## Predicting real data
 In this section, we describe how paprbag can be applied to real data based on the pre-trained forests located in the release.
 
 ### Available data
