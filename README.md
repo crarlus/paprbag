@@ -20,7 +20,7 @@ Due to changes of the dependencies, some problems occurred when installing paprb
 
 The original version of paprbag is still available under the [legacy](https://github.com/crarlus/paprbag/tree/legacy) branch.
 
-The data made available in this branch, as well as the release data, should work with recent ranger versions. For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the (release)[link]
+The data made available in this branch, as well as the release data, should work with recent ranger versions. For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
 
 They can be installed via
 ```R
@@ -79,21 +79,21 @@ Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2Read
 
 ```
 ___
-### Predicting real data
+## Predicting real data
 In this section, we describe how paprbag can be applied to real data based on the pre-trained forests located in the release.
 
-#### Available data
+### Available data
 
 The following forests are available in the release tab:
-* (classifier_all.rds)[Link]: Classifier that was trained on all data described in paprbag; only nucleotide features (faster)
-* (classifier_all_includingPeptideFeatures.rds)[Link]: Classifier that was trained on all data described in paprbag; including peptide features (slower)
+* [classifier_all.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_all.rds): Classifier that was trained on all data described in paprbag; only nucleotide features (faster)
+* [classifier_all_includingPeptideFeatures.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_all_includingPeptideFeatures.rds): Classifier that was trained on all data described in paprbag; including peptide features (slower)
 
 Furthermore, the forests related to the 5-fold cross validation in (paprbag)[link] can be found here:
-* (classifier_fold1.rds)[Link]: Classifier based on training fold 1
-* (classifier_fold2.rds)[Link]: Classifier based on training fold 2
-* (classifier_fold3.rds)[Link]: Classifier based on training fold 3
-* (classifier_fold4.rds)[Link]: Classifier based on training fold 4
-* (classifier_fold5.rds)[Link]: Classifier based on training fold 5
+* [classifier_fold1.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold1.rds): Classifier based on training fold 1
+* [classifier_fold2.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold2.rds): Classifier based on training fold 2
+* [classifier_fold3.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold3.rds): Classifier based on training fold 3
+* [classifier_fold4.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold4.rds): Classifier based on training fold 4
+* [classifier_fold5.rds](https://github.com/crarlus/paprbag/releases/download/2.0/classifier_fold5.rds): Classifier based on training fold 5
 
 *
 
@@ -119,7 +119,7 @@ saveLocation <- "Predictions/example"
 
 Predictions_paprbag <- Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2ReadFiles, saveLocation = saveLocation, OutputFilename = OutputFilename, Return.Predictions = T, Save.AsTSV = F, num.threads = 20, verbose = T)
 ```
-#### alternative: loading forest and read data into R
+### alternative: loading forest and read data into R
 * Use case: Avoids re-loading of large forests when predicting many fasta files
 
 ``` R
@@ -142,7 +142,7 @@ Prediction_forest_nuc_realdata <- Predict.ReadSet (ForestObject = forest_large <
 * note: the prediction function can be called with a number of threads via the num.threads option, however it still predicts read per read in a linear fashion. If a number of cores is available, the prediction process can be sped up by diving the reads in read chunks and joining the prediction results. Aka _Embarrassingly parallel problem_.
 
 
-#### Quick evaluation
+### Quick evaluation
 
 ``` R
 hist(Prediction_forest_nuc_realdata$predictions[,2])
@@ -154,10 +154,10 @@ ifelse(mean(Prediction_forest_nuc_realdata$predictions[,2])> 0.5, "Pathogenic", 
 
 
 
-#### Feature configuration
+### Feature configuration
 
 
-The value of `Feature.Configuration` can be set to the Configuration of the function `Predict.ReadSet`. You can pass a config varibable via:
+You can pass a value of `Feature.Configuration` in function `Predict.ReadSet`. Choose between:
 
 ```R
 # load standard configuration; used in toy forest and classifier_all.rds, classifier_fold1.rds, etc.
@@ -167,6 +167,7 @@ data("Standard.configuration_peptides")
 # infer feature configuration directly from forest
 my.configuration <- paprbag:::IdentifyFeatures.FromForest(ForestObject = forest_new)
 ```
+And set e.g. `Feature.Configuration = Standard.configuration`
 
 
 
