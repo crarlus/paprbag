@@ -7,9 +7,7 @@ The related paper is available at https://www.nature.com/articles/srep39194
 *** News
 
 * New forestes were trained with a new version of ranger and are available in the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
-* The new section v1 [Predicting real data](#predicting-real-data)
-* The new section [Predicting real data](https://github.com/crarlus/paprbag/blob/dev/README.md#predicting-real-data)
-
+* The new section [Predicting real data](#predicting-real-data)
 
 ***
 
@@ -28,7 +26,7 @@ The original version of paprbag is still available under the [legacy](https://gi
 The data made available in this branch, as well as the release data, should work with recent ranger versions. 
 
 
-For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
+For full reproducibility, the packages used for building the data sets are provided as a [packrat](https://rstudio.github.io/packrat/) bundle. The bundle can be downloaded from the [release](https://github.com/crarlus/paprbag/releases/download/2.0/paprbag_packrat_bundle-2018-05-29.tar.gz)
 
 They can be installed via
 ```R
@@ -36,7 +34,7 @@ They can be installed via
 path2bundle <- "/path/to/bundle/" 
 packrat::unbundle(bundle=path2bundle, where="/path/to/my/project")
 ```
-See [here](https://rstudio.github.io/packrat/) and [here](https://www.r-bloggers.com/creating-reproducible-software-environments-with-packrat/) for more details about packrat.
+Alternatively you can unpack the bundle, change into the new directory and start an R session. This will trigger the installation of the bundled packages. See [here](https://www.r-bloggers.com/creating-reproducible-software-environments-with-packrat/) for more details about packrat.
 
 The packages versions are also listed [here](https://github.com/crarlus/paprbag/releases/download/2.0/packrat.lock). They were installed under R version 3.4.4.
 
