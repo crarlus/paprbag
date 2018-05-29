@@ -7,7 +7,8 @@ The related paper is available at https://www.nature.com/articles/srep39194
 *** News
 
 * New forestes were trained with a new version of ranger and are available in the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
-* The new section [Predicting real data](##Predicting-real-data)
+* The new section v1 [Predicting real data](##predicting-real-data)
+* The new section [Predicting real data](https://github.com/crarlus/paprbag/blob/dev/README.md#predicting-real-data)
 
 
 ***
