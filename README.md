@@ -86,7 +86,8 @@ Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2Read
 ```
 ___
 
-[realdata](##Predicting-real-data)
+[realdata](#Predicting-real-data)
+##Predicting-real-data
 In this section, we describe how paprbag can be applied to real data based on the pre-trained forests located in the release.
 
 ### Available data
