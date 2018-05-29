@@ -18,7 +18,7 @@ _(Installation might require some time due to the package's dependencies)_
 
 Due to changes of the dependencies, some problems occurred when installing paprbag and using the original data. In particular, different ranger versions are not compatible. Since the original data were trained with ranger 0.3 they can only be used when the same ranger version is installed on your system.
 
-The original version of paprbag is still available under the (legacy)[link] branch.
+The original version of paprbag is still available under the [legacy](https://github.com/crarlus/paprbag/tree/legacy) branch.
 
 The data made available in this branch, as well as the release data, should work with recent ranger versions. For full reproducibility, the packages used for building the data sets are provided as a packrat bundle. The bundle can be downloaded from the (release)[link]
 
@@ -28,7 +28,7 @@ They can be installed via
 path2bundle <- "/path/to/bundle/" 
 packrat::unbundle(bundle=path2bundle, where="/path/to/my/project")
 ```
-See (here)[https://rstudio.github.io/packrat/] and here[https://www.r-bloggers.com/creating-reproducible-software-environments-with-packrat/] for more details about packrat.
+See [here](https://rstudio.github.io/packrat/) and [here](https://www.r-bloggers.com/creating-reproducible-software-environments-with-packrat/) for more details about packrat.
 
 The packages versions are also listed (here)[link]. They were installed under R version x.
 
