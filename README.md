@@ -7,7 +7,7 @@ The related paper is available at https://www.nature.com/articles/srep39194
 *** News
 
 * New forestes were trained with a new version of ranger and are available in the [release](https://github.com/crarlus/paprbag/releases/tag/2.0)
-* The new section [read date](realdata)
+* The new section [Predicting real data](realdata)
 
 ***
 
@@ -86,7 +86,7 @@ Predict.ReadSet.fromFiles (Path2Forest = Path2Forest, Path2ReadFiles = Path2Read
 ```
 ___
 
-[realdata](## Predicting real data)
+[realdata](##Predicting-real-data)
 In this section, we describe how paprbag can be applied to real data based on the pre-trained forests located in the release.
 
 ### Available data
