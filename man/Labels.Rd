@@ -4,7 +4,7 @@
 \name{Labels}
 \alias{Labels}
 \title{Pathogenicity labels}
-\format{An object of class \code{logical} of length 2836.}
+\format{An object of class \code{factor} of length 2000170.}
 \usage{
 Labels
 }
@@ -20,4 +20,3 @@ The species' bioproject accession is obtained by names(Labels)
 PaPrBag Paper
 }
 \keyword{datasets}
-

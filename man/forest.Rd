@@ -16,4 +16,3 @@ Provided is a small random forest trained on a very small datasets of pathogens 
 To be used for illustrative examples / tests only
 }
 \keyword{datasets}
-

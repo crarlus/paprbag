@@ -48,11 +48,10 @@ Trains a random forest classification algorithm on the Feature file in Trainingf
 Run.Training (Path2FeatureFile = Path2FeatureFile, Path2LabelFile = Path2LabelFile, SelectedFeatures = NULL, savePath = savePath, ReturnForest = F, verbose = T, min.node.size = 1, num.trees = 100, mtry = NULL, importance = 'impurity', num.threads = NULL)
 }
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 Other TrainingFunctions: \code{\link{Create.TrainingDataSet}},
   \code{\link{SelectFeatureSubset}}
 }
-
+\author{
+Carlus Deneke
+}

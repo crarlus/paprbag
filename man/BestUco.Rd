@@ -19,10 +19,9 @@ Returns a data.frame of the codon usage, i.e. the relative frequency of each cod
 \description{
 Obtain the Codon Usage from the estimated Best Frame
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 \code{\link{seqinr::uco}}
 }
-
+\author{
+Carlus Deneke
+}

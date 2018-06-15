@@ -37,11 +37,10 @@ ReadLabel_OS.rds containing a label for each read based on the organisms label
 
 This function uses the package data.table for efficiently joining many large data.frames. For even larger files, it is recommended to use linux command line tools
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 Other TrainingFunctions: \code{\link{Run.Training}},
   \code{\link{SelectFeatureSubset}}
 }
-
+\author{
+Carlus Deneke
+}

@@ -17,9 +17,6 @@ A data.frame containing the desired amino acid index stats (columns) for each se
 \description{
 For a peptide sequence, obtain properties associated to its amino acid content
 }
-\author{
-Carlus Deneke
-}
 \references{
 Adapted from aaindex in seqinr
 
@@ -27,4 +24,6 @@ Please cite the following references when making use of the database:
 
 Kawashima, S. and Kanehisa, M. (2000) AAindex: amino acid index database. Nucleic Acids Res., 28:374.
 }
-
+\author{
+Carlus Deneke
+}

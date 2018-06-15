@@ -24,4 +24,3 @@ Obtain the frequency of oligonucleotides in a DNA sequence for different k-mer s
 \author{
 Carlus Deneke
 }
-

@@ -18,4 +18,3 @@ Convert vector of sequences to its reverse complement and match symmetric partne
 \author{
 Carlus Deneke
 }
-

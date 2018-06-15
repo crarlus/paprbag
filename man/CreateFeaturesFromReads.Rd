@@ -67,4 +67,3 @@ CreateFeaturesFromReads (Reads = ReadData,NT_kmax = 3)
 \author{
 Carlus Deneke
 }
-

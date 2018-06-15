@@ -26,4 +26,3 @@ Tomii, K. and Kanehisa, M. (1996) Analysis of amino acid indices and mutation ma
 Nakai, K., Kidera, A., and Kanehisa, M. (1988) Cluster analysis of amino acid indices for prediction of protein structure and function. Protein Eng. 2:93-100.
 }
 \keyword{datasets}
-

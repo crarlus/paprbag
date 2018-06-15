@@ -20,4 +20,3 @@ Get the Frequency of each amino acid
 \author{
 Carlus Deneke
 }
-

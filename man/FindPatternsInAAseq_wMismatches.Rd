@@ -25,4 +25,3 @@ For a list of sequences, search the occurences of specified patterns
 \author{
 Carlus Deneke
 }
-

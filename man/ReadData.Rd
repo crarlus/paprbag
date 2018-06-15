@@ -15,4 +15,3 @@ Example read data
 21 read sequences of length 125 in "DNAStringSet" format
 }
 \keyword{datasets}
-

@@ -5,7 +5,8 @@
 \title{Predict ReadSet}
 \usage{
 Predict.ReadSet.fromFiles(Path2Forest, Path2ReadFiles, saveLocation,
-  OutputFilename = "Output", Return.Predictions = F, Save.AsTSV = F, ...)
+  OutputFilename = "Output", Return.Predictions = F, Save.AsTSV = F,
+  verbose = T, ...)
 }
 \arguments{
 \item{Path2Forest}{A path to a randomForest object of class ranger in .rds format}
@@ -29,10 +30,9 @@ Either the predictions (if Return.Predictions == T ) or TRUE/FALSE if Outputfile
 \description{
 This function is a wrapper for function 'Predict.ReadSet'
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 \link{Predict.ReadSet}
 }
-
+\author{
+Carlus Deneke
+}

@@ -17,11 +17,10 @@ The subsetted feature table as data.frame
 \description{
 Function to select a subset of features from the feature table
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 Other TrainingFunctions: \code{\link{Create.TrainingDataSet}},
   \code{\link{Run.Training}}
 }
-
+\author{
+Carlus Deneke
+}

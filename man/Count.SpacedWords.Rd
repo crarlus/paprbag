@@ -23,9 +23,6 @@ A matrix containing the combined counts for all possible spacer-patterns
 \description{
 Count the occurrence of all spaced words
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 \link[Biostrings]{oligonucleotideFrequency}
 
@@ -33,4 +30,6 @@ Carlus Deneke
 
 Other SpacedWordFeatures: \code{\link{Enumerate.SpacerPatterns}}
 }
-
+\author{
+Carlus Deneke
+}

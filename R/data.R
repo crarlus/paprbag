@@ -47,27 +47,57 @@
 #' Standard configuration for feature extraction
 #' @details
 #' Choice of parameters:
-#'NT_kmax = 4,
-#'SymmetricFeatures = T,
-#'Do.NTMotifs = T,
-#'NTMotifs = NULL,
-#'AllowedMismatches = 1,
-#'Do.SpacedWords = T,
-#'k.spaced = 4,
-#'l.spaced = 6,
-#'Do.PeptideFeatures = T,
-#'Do.MonoPep = T,
-#'Do.DiPep = T,
-#'Do.AAprops = T,
-#'Do.AAindex = T,
-#'AAindex_Selection = NULL,
-#'Do.UCO = T,
-#'Do.PepPatterns = F,
-#'Patterns = NULL,
-#'SearchPatternsSixFrame = T,
-#'AllowedPeptideMismatches = 0,
-#'AggregatePatterns = F
+#' NT_kmax = 4
+#' Symmetric = TRUE
+#' Do.NTMotifs = TRUE
+#' NTMotifs = NULL
+#' AllowedMismatches = 1
+#' bothStrands = TRUE
+#' Do.SpacedWords = TRUE
+#' k.spaced = 4
+#' l.spaced = 6
+#' SingleSpacerPattern = 0
+#' combineSpacerPatterns = TRUE
+#' Do.PeptideFeatures = FALSE
+#' Do.MonoPep = FALSE
+#' Do.DiPep = FALSE
+#' Do.AAprops = FALSE
+#' Do.AAindex = FALSE
+#' AAindex_Selection = c("BROC820101","BUNA790103","CHOP780207","FAUJ880105","FINA910103","GEIM800103","GEIM800105","ISOY800107","KHAG800101","LEWP710101","MAXF760103","OOBM850104","PALJ810111","PRAM820103","QIAN880102","QIAN880114","QIAN880123","QIAN880137","RACS770103","RACS820103","RICJ880101","RICJ880117","ROBB760107","TANS770106","TANS770108","VASM830101","WERD780104","AURR980102","AURR980116","AURR980118","FUKS010109","SUYM030101")
+#' Do.UCO = FALSE
+#' Do.PepPatterns = FALSE
+#' SearchPatternsSixFrame = FALSE
+#' AllowedPeptideMismatches = 0
+#' AggregatePatterns = FALSE
 "Standard.configuration"
+
+#' Standard configuration for feature extraction including peptide features
+#' @details
+#' NT_kmax = 4
+#' Symmetric = TRUE
+#' Do.NTMotifs = FALSE
+#' NTMotifs = NULL
+#' AllowedMismatches = 1
+#' bothStrands = TRUE
+#' Do.SpacedWords = TRUE
+#' k.spaced = 4
+#' l.spaced = 6
+#' SingleSpacerPattern = 0
+#' combineSpacerPatterns = TRUE
+#' Do.PeptideFeatures = TRUE
+#' Do.MonoPep = TRUE
+#' Do.DiPep = FALSE
+#' Do.AAprops = FALSE
+#' Do.AAindex = TRUE
+#' AAindex_Selection = c("BROC820101","BUNA790103","CHOP780207","FAUJ880105","FINA910103","GEIM800103","GEIM800105","ISOY800107","KHAG800101","LEWP710101","MAXF760103","OOBM850104","PALJ810111","PRAM820103","QIAN880102","QIAN880114","QIAN880123","QIAN880137","RACS770103","RACS820103","RICJ880101","RICJ880117","ROBB760107","TANS770106","TANS770108","VASM830101","WERD780104","AURR980102","AURR980116","AURR980118","FUKS010109","SUYM030101")
+#' Do.UCO = TRUE
+#' Do.PepPatterns = FALSE
+#' SearchPatternsSixFrame = FALSE
+#' AllowedPeptideMismatches = 0
+#' AggregatePatterns = FALSE
+"Standard.configuration_peptide"
+
+
 
 #' Pathogenicity labels
 #' @details

@@ -20,4 +20,3 @@ Get the frequency of di-peptides
 \author{
 Carlus Deneke
 }
-

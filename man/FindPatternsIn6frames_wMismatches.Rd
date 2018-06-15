@@ -26,4 +26,3 @@ The matches in the individual frames are combined
 \author{
 Carlus Deneke
 }
-
