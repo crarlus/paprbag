@@ -18,4 +18,3 @@ Check valididity of feature table
 \author{
 Carlus Deneke
 }
-

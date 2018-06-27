@@ -28,12 +28,11 @@ If the user supplies the Feature.Configuration it should contain the following l
  \item{"parameter 2"}{Stuff2}
  }
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 \link[ranger]{predict.ranger}
 
 \link{Predict.ReadSet.fromFiles}
 }
-
+\author{
+Carlus Deneke
+}

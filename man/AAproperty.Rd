@@ -17,4 +17,3 @@ list of amino acid with properties tiny, small, aliphatic, aromatic, non.polar, 
 seqinr package
 }
 \keyword{datasets}
-

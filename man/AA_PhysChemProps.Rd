@@ -15,13 +15,12 @@ A data.frame object containing the properties of the amino acid sequence (column
 \description{
 Computes different properties for a peptide sequence from the amino acid properties and the amino acid frequency of the sequence.
 }
-\author{
-Carlus Deneke
-}
 \references{
 Adapted from package 'seqinr'.
 }
 \seealso{
 \code{\link[seqinr]{AAstat}}
 }
-
+\author{
+Carlus Deneke
+}

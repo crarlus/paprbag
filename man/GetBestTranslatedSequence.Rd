@@ -18,4 +18,3 @@ Translate a nulceotide sequence into all possible 6-frames and decide for the fr
 \author{
 Carlus Deneke
 }
-

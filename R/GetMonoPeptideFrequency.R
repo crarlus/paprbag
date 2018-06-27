@@ -7,9 +7,19 @@
 GetMonoPeptideFrequency <- function(Seq,prob=F){
 
   #require(Biostrings)
-  AAfreq <- Biostrings::alphabetFrequency(Seq,as.prob=prob)[,1:27]
+  # AAfreq <- Biostrings::alphabetFrequency(Seq,as.prob=prob)[,1:27]
+  # colnames(AAfreq) <- paste("MonoPep",colnames(AAfreq),sep="_")
+  # colnames(AAfreq)[27] <- paste("MonoPep","terminal",sep="_")
+  # rownames(AAfreq) <- names(Seq)
+
+  AAfreq <- Biostrings::alphabetFrequency(Seq,as.prob=prob)
+  AAfreq <- AAfreq[,c(intersect(colnames(AAfreq),AA_STANDARD),"*")]
+
+  colnames(AAfreq)[colnames(AAfreq) == "*"] <- "terminal"
   colnames(AAfreq) <- paste("MonoPep",colnames(AAfreq),sep="_")
-  colnames(AAfreq)[27] <- paste("MonoPep","terminal",sep="_")
+
   rownames(AAfreq) <- names(Seq)
+
+
   return(AAfreq)
 }

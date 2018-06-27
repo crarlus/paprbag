@@ -15,4 +15,3 @@ A list object containing the relevant feature type information
 \author{
 Carlus Deneke
 }
-

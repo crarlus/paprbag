@@ -14,4 +14,3 @@ Example training data
 Provides a small set of training Data (combined label and feature table). First column name is "Labels", other column names indicate feature type
 }
 \keyword{datasets}
-

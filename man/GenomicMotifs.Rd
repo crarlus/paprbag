@@ -14,4 +14,3 @@ Genomic Motifs
 100 most frequent 8-mers in bacterial genomes
 }
 \keyword{datasets}
-

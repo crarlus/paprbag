@@ -31,10 +31,9 @@ Returns TRUE if completed
 \description{
 Update all features in a specified folder. Save features in subfolder "Features". Backup old features if desired.
 }
-\author{
-Carlus Deneke
-}
 \seealso{
 Wraps \code{\link{CreateFeaturesFromReads}}
 }
-
+\author{
+Carlus Deneke
+}

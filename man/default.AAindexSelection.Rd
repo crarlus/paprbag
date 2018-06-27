@@ -15,4 +15,3 @@ Print the default selection of aaindices and their description
 \author{
 Carlus Deneke
 }
-

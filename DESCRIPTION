@@ -1,10 +1,10 @@
 Package: paprbag
 Type: Package
 Title: Pathogenicity Prediction of Bacterial Genomes
-Version: 0.1.1
-Date: 2016-01-07
+Version: 0.2.0
+Date: 2018-06-015
 Author: Carlus Deneke
-Maintainer: Carlus Deneke <denekeC@rki.de>
+Maintainer: Carlus Deneke <carlus.deneke@bfr.bund.de>
 Description: Pathogenicity Prediction of Bacterial Genomes is a comprehensive
     machine learning workflow that trains a phenotype classifier on a set of genomes
     with phenotype labels and predicts the phenotype of a set of reads.
@@ -18,4 +18,4 @@ Imports:
     data.table,
     doParallel,
     ranger
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

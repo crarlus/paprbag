@@ -23,4 +23,3 @@ New and continuing developments at PROSITE
 Nucleic Acids Res. 2012; doi: 10.1093/nar/gks1067
 }
 \keyword{datasets}
-
